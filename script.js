@@ -9,3 +9,19 @@ function stringRevers(str) {
 }
 
 console.log(stringRevers("hello world"));
+
+//Task 2 : Create a function that takes an array of numbers as input and returns the sum of all positive numbers in the array.
+
+let arra = [10, 20, 21, 11];
+
+function numberSum(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 == 0) {
+      sum += arr[i];
+    }
+  }
+  return sum;
+}
+
+console.log(numberSum(arra));
