@@ -31,21 +31,22 @@ console.log(numberSum(arra));
 let arrays = [4, 5, 7, 88, 4, 4, 1, 4, 4, 3, 3];
 
 function findFrequent(arr) {
-  let a = 0;
-  let b = 1;
-  let items;
-
+  const frequencyMap = {};
   for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[i] === arr[j]) a++;
-      if (b < a) {
-        b = a;
-        items = arr[i];
-      }
-    }
-    m = 0;
+    frequencyMap[arr[i]] = (frequencyMap[arr[i]] || 0) + 1;
   }
-  return items;
+  console.log("value", frequencyMap);
+
+  let mostFrequentElement;
+  let maxFrequency = 0;
+  for (const element in frequencyMap) {
+    if (frequencyMap[element] > maxFrequency) {
+      mostFrequentElement = element;
+      maxFrequency = frequencyMap[element];
+    }
+  }
+
+  return mostFrequentElement;
 }
 console.log(findFrequent(arrays));
 
@@ -64,3 +65,25 @@ function sumTwoIndx(arr, indx, indx2) {
   return sumTwo;
 }
 console.log(sumTwoIndx(arro, 1, 4));
+
+//Task 5: Implement a simple JavaScript calculator. The calculator should take two numbers and an operator (+, -, *, /) as input and return the result of the operation.
+
+function calCu(num1, operator, num2) {
+  switch (operator) {
+    case "+":
+      return num1 + num2;
+    case "-":
+      return num1 - num2;
+    case "*":
+      return num1 * num2;
+    case "/":
+      if (num2 === 0) {
+        return "Error: Cannot divide by zero.";
+      }
+      return num1 / num2;
+    default:
+      return "Error: This is Invalid operator";
+  }
+}
+
+console.log(calCu(15, "+", 2));
