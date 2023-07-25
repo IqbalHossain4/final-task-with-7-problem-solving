@@ -111,4 +111,22 @@ console.log(generateRandomPass(12));
 
 //Task 8: Implement a JavaScript function to find the second smallest element in an array of numbers. The function should return the second smallest number.
 
-// fff
+let arrs = [4, 8, 15, 1, 5, 7, 2, 3];
+
+function find2ndSmNumber(arr) {
+  let smallest = arr[0];
+  let secondSmallest = arr[0];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < smallest) {
+      secondSmallest = smallest;
+      smallest = arr[i];
+    } else if (arr[i] < secondSmallest) {
+      secondSmallest = arr[i];
+    }
+  }
+
+  return secondSmallest;
+}
+
+console.log(find2ndSmNumber(arrs));
