@@ -35,18 +35,17 @@ function findFrequent(arr) {
   for (let i = 0; i < arr.length; i++) {
     frequencyMap[arr[i]] = (frequencyMap[arr[i]] || 0) + 1;
   }
-  console.log("value", frequencyMap);
 
-  let mostFrequentElement;
+  let frequent;
   let maxFrequency = 0;
   for (const element in frequencyMap) {
     if (frequencyMap[element] > maxFrequency) {
-      mostFrequentElement = element;
+      frequent = element;
       maxFrequency = frequencyMap[element];
     }
   }
 
-  return mostFrequentElement;
+  return frequent;
 }
 console.log(findFrequent(arrays));
 
@@ -68,22 +67,44 @@ console.log(sumTwoIndx(arro, 1, 4));
 
 //Task 5: Implement a simple JavaScript calculator. The calculator should take two numbers and an operator (+, -, *, /) as input and return the result of the operation.
 
-function calCu(num1, operator, num2) {
+function calCu(val1, operator, val2) {
   switch (operator) {
     case "+":
-      return num1 + num2;
+      return val1 + val2;
     case "-":
-      return num1 - num2;
+      return val1 - val2;
     case "*":
-      return num1 * num2;
+      return val1 * val2;
     case "/":
-      if (num2 === 0) {
+      if (val2 === 0) {
         return "Error: Cannot divide by zero.";
       }
-      return num1 / num2;
+      return val1 / val2;
     default:
       return "Error: This is Invalid operator";
   }
 }
 
 console.log(calCu(15, "+", 2));
+
+//Task 6: Create a program that generates a random password of a specified length. The password should include a mix of uppercase letters, lowercase letters, numbers, and special characters.
+
+let uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+let numbers = "0123456789";
+let specialCharacters = "!@#$%^&*()_-+=<>?/{}~|";
+let allCharacters =
+  uppercaseLetters + lowercaseLetters + numbers + specialCharacters;
+
+function generateRandomPass(passLength) {
+  let password = "";
+  if (passLength < 8) {
+    return "Password length should be at least 8 characters.";
+  }
+  for (let i = 0; i < passLength; i++) {
+    let makeRandom = Math.floor(Math.random() * allCharacters.length);
+    password = password + allCharacters[makeRandom];
+  }
+  return password;
+}
+console.log(generateRandomPass(12));
